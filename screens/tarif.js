@@ -35,7 +35,7 @@ export default class Tarif extends React.Component {
   }
 render() {
   return (
-    <ScrollView style={globalStyles.container}>
+    <ScrollView style={globalStyles.scrollContainer}>
       <Text>Электроэнергия, грн\кВт</Text>
       <TextInput 
       placeholder="Введите данные"
