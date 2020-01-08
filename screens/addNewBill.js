@@ -94,6 +94,13 @@ export default class AddNewBill extends React.Component {
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'cold')}
       value={this.cold}/>
+       <Text>Отопление, грн</Text>
+      <TextInput 
+      placeholder="Введите данные"
+      keyboardType="decimal-pad"
+      style={globalStyles.input}
+      onChangeText={(val)=> this.onChangeInput(val, 'heating')}
+      value={this.heating}/>
       
       <Button title="Добавить" onPress={()=> this.submitToBD(this.state)} />
     </View>

@@ -18,7 +18,7 @@ export default function Home({ navigation }) {
       electr: +dataAccount[key].electr,
       stove: +dataTarif.stove,
       internet: +dataTarif.internet,
-      heating: +dataTarif.heating,
+      heating: +dataAccount[key].heating,
       month: dataAccount[key].month,
       date: dataAccount[key].date,
       key: key
@@ -70,7 +70,7 @@ export default function Home({ navigation }) {
       <FlatList data={reviews} renderItem={({ item }) => (
         <TouchableOpacity style={globalStyles.dashboardItem} onLongPress={()=> deleteItem(item) } onPress={() => navigation.navigate('ReviewDetails', item)}>
           <Text style={globalStyles.titleText}>Счет за { item.month }</Text>
-      <Text>Всего за месяц {item.total} грн</Text>
+      <Text>Всего за месяц {item.total.toFixed(2)} грн</Text>
         </TouchableOpacity>
       )} />
     </View>

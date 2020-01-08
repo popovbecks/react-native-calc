@@ -35,20 +35,21 @@ export default class Tarif extends React.Component {
   }
 render() {
   return (
-    <ScrollView style={globalStyles.scrollContainer}>
+    <View style={globalStyles.container}>
+    <ScrollView >
       <Text>Электроэнергия, грн\кВт</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
-       onChangeText={(val)=> this.onChangeInput(val, 'electr')}
+      onChangeText={(val)=> this.onChangeInput(val, 'electr')}
       value={this.state.electr}/>
        <Text>Электроэнергия, нач. знач. кВт</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
-       onChangeText={(val)=> this.onChangeInput(val, 'electrStart')}
+      onChangeText={(val)=> this.onChangeInput(val, 'electrStart')}
       value={this.state.electrStart}/>
        <Text>Холодная вода грн\м3</Text>
       <TextInput 
@@ -78,13 +79,6 @@ render() {
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'hotStart')}
       value={this.state.hotStart}/>
-       <Text>Отопление, грн</Text>
-      <TextInput 
-      placeholder="Введите данные"
-      keyboardType="decimal-pad"
-      style={globalStyles.input}
-      onChangeText={(val)=> this.onChangeInput(val, 'heating')}
-      value={this.state.heating}/>
        <Text>Интернет, грн\мес</Text>
       <TextInput 
       placeholder="Введите данные"
@@ -106,10 +100,9 @@ render() {
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'stove')}
       value={this.state.stove}/>
-      <Button title="Подтвердить" onPress={()=>this.updateTarif()}>
-
-      </Button>
+      <Button title="Подтвердить" onPress={()=>this.updateTarif()}></Button>
     </ScrollView>
+      </View>
   );
 } 
 

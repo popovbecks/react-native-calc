@@ -15,7 +15,11 @@ export const globalStyles = StyleSheet.create({
     padding: 20
   },
   scrollContainer: {
-    paddingBottom:100
+    flex:1,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 20,
+    paddingBottom: 150
   },
   input: {
     borderWidth: 1,
