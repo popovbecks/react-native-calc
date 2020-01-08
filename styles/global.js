@@ -37,5 +37,13 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: '#26D61D',
     padding:20,
     margin:10
+  },
+  noItems: {
+    flex: 1,
+    fontSize:20,
+    flexDirection:'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center'
   }
 });

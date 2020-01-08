@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, FlatList, Button } from 'react-native';
 import { globalStyles } from '../styles/global';
 
@@ -39,9 +39,9 @@ export default function Home({ navigation }) {
     item.total = item.electrValue + item.coldWaterValue + item.hotWaterValue + item.heating + item.stove + item.canalization + item.internet;
   })
   setReviews(billsArray)
+  return 
   }
   
-  getData();
   const [reviews, setReviews] = useState(),
   calcElectr = (data, tarif)=> {
     if(data > 100) {
@@ -61,7 +61,8 @@ export default function Home({ navigation }) {
         'Content-Type': 'application/json;charset=utf-8'
         }})
   };
-
+  useEffect(()=>{
+    getData()})
   return (
     <View style={globalStyles.container}>
       <View>
