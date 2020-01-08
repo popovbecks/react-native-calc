@@ -4,43 +4,7 @@ import { globalStyles } from '../styles/global';
 
 export default function Home({ navigation }) {
   const billsArray = [];
-  let getData = async () => {
-    const DB = 'https://filmsonangular.firebaseio.com/bills.json';
-    const Tarif = `https://filmsonangular.firebaseio.com/tarif.json`;
-  let respAccount = await fetch(DB);
-  let dataAccount = await respAccount.json();
-  let respTarif = await fetch(Tarif);
-  let dataTarif = await respTarif.json();
-  for(const key in dataAccount) {
-    billsArray.push({
-      coldWater: +dataAccount[key].cold,
-      hotWater: +dataAccount[key].hot,
-      electr: +dataAccount[key].electr,
-      stove: +dataTarif.stove,
-      internet: +dataTarif.internet,
-      heating: +dataAccount[key].heating,
-      month: dataAccount[key].month,
-      date: dataAccount[key].date,
-      key: key
-    })
-  }
-  billsArray.forEach((item, index)=> {
-    let hot = billsArray[index - 1] ? item.hotWater - billsArray[index - 1].hotWater : (item.hotWater - +dataTarif.hotStart);
-    let cold = billsArray[index - 1] ? item.coldWater - billsArray[index - 1].coldWater: (item.coldWater - +dataTarif.coldStart);
-    let electr = billsArray[index - 1] ? (item.electr - billsArray[index - 1].electr) : (item.electr - +dataTarif.electrStart);
-    let canaliz = (cold + hot) * +dataTarif.canaliz;
-    item.electrEnt = electr;
-    item.hotEnt = hot;
-    item.coldEnt = cold;
-    item.coldWaterValue = calcWater(cold, +dataTarif.cold);
-    item.hotWaterValue = calcWater(hot, +dataTarif.hot);
-    item.electrValue = calcElectr(electr, +dataTarif.electr);
-    item.canalization = canaliz;
-    item.total = item.electrValue + item.coldWaterValue + item.hotWaterValue + item.heating + item.stove + item.canalization + item.internet;
-  })
-  setReviews(billsArray)
-  return 
-  }
+ 
   
   const [reviews, setReviews] = useState(),
   calcElectr = (data, tarif)=> {
@@ -62,6 +26,42 @@ export default function Home({ navigation }) {
         }})
   };
   useEffect(()=>{
+    let getData = async () => {
+      const DB = 'https://filmsonangular.firebaseio.com/bills.json';
+      const Tarif = `https://filmsonangular.firebaseio.com/tarif.json`;
+    let respAccount = await fetch(DB);
+    let dataAccount = await respAccount.json();
+    let respTarif = await fetch(Tarif);
+    let dataTarif = await respTarif.json();
+    for(const key in dataAccount) {
+      billsArray.push({
+        coldWater: +dataAccount[key].cold,
+        hotWater: +dataAccount[key].hot,
+        electr: +dataAccount[key].electr,
+        stove: +dataTarif.stove,
+        internet: +dataTarif.internet,
+        heating: +dataAccount[key].heating,
+        month: dataAccount[key].month,
+        date: dataAccount[key].date,
+        key: key
+      })
+    }
+    billsArray.forEach((item, index)=> {
+      let hot = billsArray[index - 1] ? item.hotWater - billsArray[index - 1].hotWater : (item.hotWater - +dataTarif.hotStart);
+      let cold = billsArray[index - 1] ? item.coldWater - billsArray[index - 1].coldWater: (item.coldWater - +dataTarif.coldStart);
+      let electr = billsArray[index - 1] ? (item.electr - billsArray[index - 1].electr) : (item.electr - +dataTarif.electrStart);
+      let canaliz = (cold + hot) * +dataTarif.canaliz;
+      item.electrEnt = electr;
+      item.hotEnt = hot;
+      item.coldEnt = cold;
+      item.coldWaterValue = calcWater(cold, +dataTarif.cold);
+      item.hotWaterValue = calcWater(hot, +dataTarif.hot);
+      item.electrValue = calcElectr(electr, +dataTarif.electr);
+      item.canalization = canaliz;
+      item.total = item.electrValue + item.coldWaterValue + item.hotWaterValue + item.heating + item.stove + item.canalization + item.internet;
+    })
+    setReviews(billsArray)
+    }
     getData()})
   return (
     <View style={globalStyles.container}>
