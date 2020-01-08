@@ -2,12 +2,16 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Home from '../screens/home';
 import ReviewDetails from '../screens/reviewDetails';
 import AddNewBill from '../screens/addNewBill';
+import Header from '../shared/header';
+import React from 'react';
 
 const screens = {
     Home: {
         screen: Home,
-        navigationOptions: {
-            title: 'Список счетов',
+        navigationOptions: ({navigation})=> {
+            return {
+                headerTitle: () => <Header navigation={navigation} title='Список счетов'/>,
+            }
         }
     },
     ReviewDetails: {

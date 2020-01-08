@@ -1,12 +1,16 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import Tarif from '../screens/tarif';
+import Header from '../shared/header';
+import React from 'react';
 
 const screens = {
   Tarif: {
     screen: Tarif,
-    navigationOptions: {
-      title: 'Тарифы'
-    },
+    navigationOptions: ({navigation})=> {
+      return {
+          headerTitle: () => <Header navigation={navigation} title='Тарифы'/>,
+      }
+  }
   },
 }
 
