@@ -13,7 +13,6 @@ export default function Home({ navigation }) {
   let dataTarif = await respTarif.json();
   for(const key in dataAccount) {
     billsArray.push({
-      canalization: +dataAccount[key].canalization * +dataTarif.canaliz,
       coldWater: +dataAccount[key].cold,
       hotWater: +dataAccount[key].hot,
       electr: +dataAccount[key].electr,
@@ -26,12 +25,17 @@ export default function Home({ navigation }) {
     })
   }
   billsArray.forEach((item, index)=> {
-    let hot = item[index - 1] ? item.hotWater - item[index - 1].hotWater * dataTarif.hot: (item.hotWater - +dataTarif.hotStart) * +dataTarif.hot;
-    let cold = item[index - 1] ? item.coldWater - item[index - 1].coldWater * dataTarif.cold: (item.coldWater - +dataTarif.coldStart) * +dataTarif.cold;
-    let electr = item[index - 1] ? item.electr - item[index - 1].electr * dataTarif.electr : (item.electr - +dataTarif.electrStart);
-    item.coldWaterValue = cold;
-    item.hotWaterValue = hot;
+    let hot = billsArray[index - 1] ? item.hotWater - billsArray[index - 1].hotWater : (item.hotWater - +dataTarif.hotStart);
+    let cold = billsArray[index - 1] ? item.coldWater - billsArray[index - 1].coldWater: (item.coldWater - +dataTarif.coldStart);
+    let electr = billsArray[index - 1] ? (item.electr - billsArray[index - 1].electr) : (item.electr - +dataTarif.electrStart);
+    let canaliz = (cold + hot) * +dataTarif.canaliz;
+    item.electrEnt = electr;
+    item.hotEnt = hot;
+    item.coldEnt = cold;
+    item.coldWaterValue = calcWater(cold, +dataTarif.cold);
+    item.hotWaterValue = calcWater(hot, +dataTarif.hot);
     item.electrValue = calcElectr(electr, +dataTarif.electr);
+    item.canalization = canaliz;
     item.total = item.electrValue + item.coldWaterValue + item.hotWaterValue + item.heating + item.stove + item.canalization + item.internet;
   })
   setReviews(billsArray)
@@ -45,6 +49,9 @@ export default function Home({ navigation }) {
     } else {
       return data * tarif;
     }
+  },
+  calcWater = (data, tarif) =>{
+    return data * tarif
   },
   deleteItem = (item)=> {
     const DB = `https://filmsonangular.firebaseio.com/bills/${item.key}.json`;
