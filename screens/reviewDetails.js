@@ -9,12 +9,20 @@ export default function ReviewDetails({ navigation }) {
       <View style={globalStyles.container}>
         <ScrollView>
           <View>
+          <View style={styles.listItem}>
+              <Text style={styles.name}>
+              Дата созд.
+              </Text>
+              <Text style={styles.value}>
+                {navigation.getParam('date')}
+              </Text>
+            </View>
             <View style={styles.listItem}>
               <Text style={styles.name}>
               Электроэнергия
               </Text>
               <Text style={styles.value}>
-                {navigation.getParam('electrValue')} грн ({navigation.getParam('electrEnt')} кВт)
+                {navigation.getParam('electrValue').toFixed(2)} грн ({navigation.getParam('electrEnt')} кВт)
               </Text>
             </View>
             <View style={styles.listItem}>
@@ -74,6 +82,14 @@ export default function ReviewDetails({ navigation }) {
               {navigation.getParam('total').toFixed(2)} грн 
               </Text>
             </View>
+            <View style={styles.listItem}>
+              <Text style={styles.nameTotal}>
+              Всего оплатить
+              </Text>
+              <Text style={styles.valueTotal}>
+              {navigation.getParam('total').toFixed(2) - navigation.getParam('internet')} грн 
+              </Text>
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -87,16 +103,19 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: '600',
-    fontSize: 14
+    fontSize: 14,
+    color: '#fff'
   },
   value: {
-    fontSize: 14
+    fontSize: 14,
+    color: '#fff'
   },
   nameTotal: {
-    fontSize: 20
+    fontSize: 18,
+    color: 'ivory'
   },
   valueTotal: {
-    fontSize:20,
-    color: 'red'
+    fontSize:18,
+    color: 'red',
   }
 })

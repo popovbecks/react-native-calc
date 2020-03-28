@@ -37,63 +37,56 @@ render() {
   return (
     <View style={globalStyles.container}>
     <ScrollView >
-      <Text>Электроэнергия, грн\кВт</Text>
+      <Text style={globalStyles.titleText}>Электроэнергия, грн\кВт</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'electr')}
       value={this.state.electr}/>
-       <Text>Электроэнергия, нач. знач. кВт</Text>
+       <Text style={globalStyles.titleText}>Электроэнергия, нач. знач. кВт</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'electrStart')}
       value={this.state.electrStart}/>
-       <Text>Холодная вода грн\м3</Text>
+       <Text style={globalStyles.titleText}>Холодная вода грн\м3</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'cold')}
       value={this.state.cold}/>
-       <Text>Холодная вода нач. знач. м3</Text>
+       <Text style={globalStyles.titleText}>Холодная вода нач. знач. м3</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'coldStart')}
       value={this.state.coldStart}/>
-      <Text>Горячая вода, грн\м3</Text>
+      <Text style={globalStyles.titleText}>Горячая вода, грн\м3</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'hot')}
       value={this.state.hot}/>
-       <Text>Горячая вода нач. знач. грн\м3</Text>
+       <Text style={globalStyles.titleText}>Горячая вода нач. знач. грн\м3</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'hotStart')}
       value={this.state.hotStart}/>
-       <Text>Интернет, грн\мес</Text>
-      <TextInput 
-      placeholder="Введите данные"
-      keyboardType="decimal-pad"
-      style={globalStyles.input}
-      onChangeText={(val)=> this.onChangeInput(val, 'internet')}
-      value={this.state.internet}/>
-       <Text>Канализация грн\м3</Text>
+       <Text style={globalStyles.titleText}>Канализация грн\м3</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'canaliz')}
       value={this.state.canaliz}/>
-      <Text>Газовая плита грн\мес</Text>
+      <Text style={globalStyles.titleText}>Газовая плита грн\мес</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"

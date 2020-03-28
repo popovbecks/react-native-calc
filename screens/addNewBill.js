@@ -72,35 +72,45 @@ export default class AddNewBill extends React.Component {
         data={this.dataDrop}
        onChangeText={(val)=> this.onChangeInput(val, 'month')}
         containerStyle={{margin:0, padding:0, width:200, top:0}}
+        baseColor='#fff'
+        textColor='#fff'
+        selectedItemColor='black'
       />
-      <Text>Электричество, кВт/час</Text>
+      <Text style={globalStyles.titleText}>Электричество, кВт/час</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
      onChangeText={(val)=> this.onChangeInput(val, 'electr')}
       value={this.electr}/>
-      <Text>Горячая Вода, м3</Text>
+      <Text style={globalStyles.titleText}>Горячая Вода, м3</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'hot')}
       value={this.hot}/>
-      <Text>Холодная вода, м3</Text>
+      <Text style={globalStyles.titleText}>Холодная вода, м3</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'cold')}
       value={this.cold}/>
-       <Text>Отопление, грн</Text>
+       <Text style={globalStyles.titleText}>Отопление, грн</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'heating')}
       value={this.heating}/>
+       <Text style={globalStyles.titleText}>Интернет, грн\мес</Text>
+      <TextInput 
+      placeholder="Введите данные"
+      keyboardType="decimal-pad"
+      style={globalStyles.input}
+      onChangeText={(val)=> this.onChangeInput(val, 'internet')}
+      value={this.state.internet}/>
       
       <Button title="Добавить" onPress={()=> this.submitToBD(this.state)} />
     </View>

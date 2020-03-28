@@ -35,12 +35,12 @@ export default function Home({ navigation }) {
     let dataTarif = await respTarif.json();
     for(const key in dataAccount) {
       billsArray.push({
-        coldWater: +dataAccount[key].cold,
-        hotWater: +dataAccount[key].hot,
+        coldWater: +dataAccount[key].cold || 0,
+        hotWater: +dataAccount[key].hot || 0,
         electr: +dataAccount[key].electr,
         stove: +dataTarif.stove,
-        internet: +dataTarif.internet,
-        heating: +dataAccount[key].heating,
+        internet: +dataAccount[key].internet || 0,
+        heating: +dataAccount[key].heating || 0,
         month: dataAccount[key].month,
         date: dataAccount[key].date,
         key: key

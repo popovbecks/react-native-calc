@@ -12,7 +12,8 @@ export const globalStyles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 20
+    padding: 20,
+    backgroundColor: 'linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(32,124,202,1) 35%,rgba(41,137,216,1) 50%,rgba(125,185,232,1) 100%)',
   },
   scrollContainer: {
     flex:1,
@@ -22,13 +23,14 @@ export const globalStyles = StyleSheet.create({
     paddingBottom: 150
   },
   input: {
-    borderWidth: 1,
-    borderBottomColor: '#777',
+    borderBottomWidth: 2,
+    borderBottomColor:'#fff',
     paddingLeft:5,
     width:200,
     height:25,
     marginBottom:10,
-    marginTop:5
+    marginTop:5,
+    color: '#fff'
   },
   dropdown: {
     width:200
