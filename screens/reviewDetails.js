@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView, Button } from 'react-native';
 import { globalStyles } from '../styles/global';
-
+import {LinearGradient} from 'expo-linear-gradient';
 
 export default function ReviewDetails({ navigation }) {
   return (
-    <View style={globalStyles.container}>
-      <View style={globalStyles.container}>
+      <LinearGradient colors={['#2974FA', '#38ABFD', '#43D4FF']} style={globalStyles.container}>
         <ScrollView>
           <View>
           <View style={styles.listItem}>
@@ -103,8 +102,7 @@ export default function ReviewDetails({ navigation }) {
             <Button title="Редактировать" onPress={() => navigation.navigate('EditBill', navigation)} />
           </View>
         </ScrollView>
-      </View>
-    </View>
+    </LinearGradient>
   );
 }
 const styles = StyleSheet.create({
@@ -127,6 +125,7 @@ const styles = StyleSheet.create({
   },
   valueTotal: {
     fontSize:18,
-    color: 'red',
+    color: 'black',
+    fontWeight: 'bold'
   }
 })

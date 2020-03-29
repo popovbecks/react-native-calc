@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Bills calculator",
-    "slug": "Bills calculator",
+    "slug": "billscalculator",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 export const globalStyles = StyleSheet.create({
+  titleTextHome: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+    textDecorationLine: 'underline'
+  },
   titleText: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -13,7 +19,7 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: 'linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(32,124,202,1) 35%,rgba(41,137,216,1) 50%,rgba(125,185,232,1) 100%)',
+    backgroundColor: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(50,215,194,1) 0%, rgba(0,212,255,1) 100%)',
   },
   scrollContainer: {
     flex:1,
@@ -36,9 +42,12 @@ export const globalStyles = StyleSheet.create({
     width:200
   },
   dashboardItem: {
-    backgroundColor: '#26D61D',
     padding:20,
-    margin:10
+    margin:10,
+    borderRadius: 5,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: 'ivory'
   },
   noItems: {
     flex: 1,

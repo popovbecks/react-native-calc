@@ -1,6 +1,7 @@
 import React, {useState, Component } from 'react';
 import { StyleSheet, View, Text, TextInput, Button , ScrollView} from 'react-native';
 import { globalStyles } from '../styles/global';
+import {LinearGradient} from 'expo-linear-gradient';
 
 export default class Tarif extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Tarif extends React.Component {
   }
 render() {
   return (
-    <View style={globalStyles.container}>
+    <LinearGradient colors={['#2974FA', '#38ABFD', '#43D4FF']} style={globalStyles.container}>
     <ScrollView >
       <Text style={globalStyles.titleText}>Электроэнергия, грн\кВт</Text>
       <TextInput 
@@ -95,7 +96,7 @@ render() {
       value={this.state.stove}/>
       <Button title="Подтвердить" onPress={()=>this.updateTarif()}></Button>
     </ScrollView>
-      </View>
+      </LinearGradient>
   );
 } 
 

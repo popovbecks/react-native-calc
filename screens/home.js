@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, FlatList, Button } from 'react-native';
 import { globalStyles } from '../styles/global';
+import {LinearGradient} from 'expo-linear-gradient';
 
 export default function Home({ navigation }) {
   const billsArray = [];
@@ -59,22 +60,28 @@ export default function Home({ navigation }) {
       item.hotWaterValue = calcWater(hot, +dataTarif.hot);
       item.electrValue = calcElectr(electr, +dataTarif.electr);
       item.canalization = canaliz;
-      item.total = item.electrValue + item.coldWaterValue + item.hotWaterValue + item.heating + item.stove + item.canalization + item.internet + +item.avans;
+      item.total = item.electrValue + item.coldWaterValue + item.hotWaterValue + item.heating + item.stove + item.canalization + item.internet - +item.avans;
     })
     setReviews(billsArray)
     }
     getData()})
   return (
-    <View style={globalStyles.container}>
-      <View>
-        <Button title="Добавить новый счет" onPress={() => navigation.navigate('AddNewBill')} />
-      </View>
-      <FlatList data={reviews} renderItem={({ item }) => (
-        <TouchableOpacity style={globalStyles.dashboardItem} onLongPress={()=> deleteItem(item) } onPress={() => navigation.navigate('ReviewDetails', item)}>
-          <Text style={globalStyles.titleText}>Счет за { item.month }</Text>
-      <Text>Всего за месяц {item.total.toFixed(2)} грн</Text>
-        </TouchableOpacity>
-      )} />
-    </View>
+   
+      <LinearGradient colors={['#2974FA', '#38ABFD', '#43D4FF']} style={globalStyles.container}>
+        <View>
+          <Button title="Добавить новый счет" onPress={() => navigation.navigate('AddNewBill')} />
+        </View>
+        <FlatList data={reviews} renderItem={({ item }) => (
+          <TouchableOpacity onLongPress={() => deleteItem(item)} onPress={() => navigation.navigate('ReviewDetails', item)}>
+            <LinearGradient colors={['#ddeeeb', '#d2eceb', '#c6e9ec', '#bbe6f0', '#b2e3f4']}
+      start={[0, 0]}
+      end={[1, 1]}
+      location={[0.25, 0.4, 1]} style={globalStyles.dashboardItem} >
+            <Text style={globalStyles.titleTextHome}>Счет за {item.month}</Text>
+            <Text>Всего за месяц {item.total.toFixed(2)} грн</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        )} />
+      </LinearGradient>
   );
 }

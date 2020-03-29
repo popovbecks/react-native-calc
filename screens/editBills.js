@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'react-native-material-dropdown';
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
 import { globalStyles } from '../styles/global';
-
+import {LinearGradient} from 'expo-linear-gradient';
 export default class EditBill extends React.Component {
     constructor(data) {
         super(data);
@@ -81,7 +81,7 @@ export default class EditBill extends React.Component {
 
     render() {
         return (
-            <View style={globalStyles.container}>
+            <LinearGradient colors={['#2974FA', '#38ABFD', '#43D4FF']} style={globalStyles.container}>
                 <Dropdown
                     label='Выбрать месяц'
                     data={this.dataDrop}
@@ -136,7 +136,7 @@ export default class EditBill extends React.Component {
                     value={this.state.avans + ''} />
 
                 <Button title="Обновить" onPress={() => this.submitToBD(this.state)} />
-            </View>
+            </LinearGradient>
         );
     }
 
