@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "gamezone",
-    "slug": "gamezone",
+    "name": "Bills calculator",
+    "slug": "Bills calculator",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

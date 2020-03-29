@@ -11,7 +11,8 @@ export default class AddNewBill extends React.Component {
             electr: '',
             hotWater: '',
             coldWater: '',
-            month:''
+            month:'',
+            avans: ''
         }
       this.dataDrop = [
            {
@@ -50,7 +51,7 @@ export default class AddNewBill extends React.Component {
         async submitToBD (data) {
           const DB = 'https://filmsonangular.firebaseio.com/bills.json';
           const fullDate = `${new Date().getDate()} ${new Date().getMonth() + 1} ${new Date().getFullYear()}`;
-           const submit = Object.assign(data, {canalization: +data.hotWater + +data.coldWater, date: fullDate });
+           const submit = Object.assign(data, {canalization: +data.hotWater + +data.coldWater, date: fullDate} );
             fetch(DB, 
                 {method: 'POST',
                 headers: {
@@ -82,7 +83,7 @@ export default class AddNewBill extends React.Component {
       keyboardType="decimal-pad"
       style={globalStyles.input}
      onChangeText={(val)=> this.onChangeInput(val, 'electr')}
-      value={this.electr}/>
+      value={this.state.electr}/>
       <Text style={globalStyles.titleText}>Горячая Вода, м3</Text>
       <TextInput 
       placeholder="Введите данные"
@@ -96,14 +97,14 @@ export default class AddNewBill extends React.Component {
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'cold')}
-      value={this.cold}/>
+      value={this.state.cold}/>
        <Text style={globalStyles.titleText}>Отопление, грн</Text>
       <TextInput 
       placeholder="Введите данные"
       keyboardType="decimal-pad"
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'heating')}
-      value={this.heating}/>
+      value={this.state.heating}/>
        <Text style={globalStyles.titleText}>Интернет, грн\мес</Text>
       <TextInput 
       placeholder="Введите данные"
@@ -111,6 +112,14 @@ export default class AddNewBill extends React.Component {
       style={globalStyles.input}
       onChangeText={(val)=> this.onChangeInput(val, 'internet')}
       value={this.state.internet}/>
+       <Text style={globalStyles.titleText}>Аванс, грн</Text>
+       <TextInput 
+      placeholder="Введите данные"
+      keyboardType="decimal-pad"
+      style={globalStyles.input}
+      onChangeText={(val)=> this.onChangeInput(val, 'avans')}
+      value={this.state.avans}/>
+     
       
       <Button title="Добавить" onPress={()=> this.submitToBD(this.state)} />
     </View>

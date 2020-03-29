@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Button } from 'react-native';
 import { globalStyles } from '../styles/global';
 
 
@@ -75,6 +75,14 @@ export default function ReviewDetails({ navigation }) {
               </Text>
             </View>
             <View style={styles.listItem}>
+              <Text style={styles.name}>
+              Аванс
+              </Text>
+              <Text style={styles.value}>
+              {navigation.getParam('avans')} грн 
+              </Text>
+            </View>
+            <View style={styles.listItem}>
               <Text style={styles.nameTotal}>
               Всего за месяц
               </Text>
@@ -90,6 +98,9 @@ export default function ReviewDetails({ navigation }) {
               {navigation.getParam('total').toFixed(2) - navigation.getParam('internet')} грн 
               </Text>
             </View>
+          </View>
+          <View>
+            <Button title="Редактировать" onPress={() => navigation.navigate('EditBill', navigation)} />
           </View>
         </ScrollView>
       </View>

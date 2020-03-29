@@ -42,6 +42,7 @@ export default function Home({ navigation }) {
         internet: +dataAccount[key].internet || 0,
         heating: +dataAccount[key].heating || 0,
         month: dataAccount[key].month,
+        avans: dataAccount[key].avans,
         date: dataAccount[key].date,
         key: key
       })
@@ -58,7 +59,7 @@ export default function Home({ navigation }) {
       item.hotWaterValue = calcWater(hot, +dataTarif.hot);
       item.electrValue = calcElectr(electr, +dataTarif.electr);
       item.canalization = canaliz;
-      item.total = item.electrValue + item.coldWaterValue + item.hotWaterValue + item.heating + item.stove + item.canalization + item.internet;
+      item.total = item.electrValue + item.coldWaterValue + item.hotWaterValue + item.heating + item.stove + item.canalization + item.internet + +item.avans;
     })
     setReviews(billsArray)
     }
